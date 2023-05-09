@@ -1,0 +1,40 @@
+---
+- name: Gather EC2 facts
+  ec2_metadata_facts:
+
+- name: setup nginx group
+  group:
+    name: "{{ nginx_group }}"
+    system: yes
+    state: present
+
+- name: setup nginx user
+  user:
+    name: "{{ nginx_user }}"
+    system: yes
+    group: "{{ nginx_group }}"
+
+- include: install.yml
+- include: logrotate.yml
+
+
+- name: nginx systemd
+  template:
+    src: systemd.service.j2
+    dest: "/etc/systemd/system/{{ nginx_name }}.service"
+    owner: root
+    group: root
+  tags:
+  - deployment
+  - skip-build
+
+- name: enable nginx
+  systemd:
+    name: "{{ nginx_name }}"
+    enabled: yes
+  notify:
+  - restart-nginx
+  tags:
+  - deployment
+  - skip-build
+

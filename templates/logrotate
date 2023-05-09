@@ -1,0 +1,12 @@
+{{ nginx_path }}/logs/*log {
+  daily
+  rotate 30
+  notifempty
+  missingok
+  compress
+  create
+  postrotate
+    [ -f {{ nginx_path }}/logs/nginx.pid ] && {{ nginx_path }}/sbin/nginx -s reopen
+  endscript
+}
+

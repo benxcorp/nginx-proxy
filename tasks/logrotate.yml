@@ -1,0 +1,7 @@
+- name : copy logrotate for nginx
+  become : yes
+  template : src=logrotate  dest=/etc/logrotate.d/nginx
+
+- name : apply logroate
+  become : yes
+  shell : /usr/sbin/logrotate -f /etc/logrotate.d/nginx

@@ -1,0 +1,50 @@
+---
+benx_deploy_s3_bucket: benx-deploy
+
+nginx_s3_path: "nginx/{{ branch|default('develop') }}"
+
+nginx_name: nginx
+nginx_user: nginx
+nginx_group: nginx
+
+nginx_spring_application_name: "nginx"
+nginx_java_home: "/usr/lib/jvm/jre-1.8.0-openjdk"
+
+nginx_base_path: "/opt"
+nginx_path: "{{ nginx_base_path }}/{{ nginx_name }}"
+nginx_config_path: "/etc/{{ nginx_name }}"
+nginx_config: "{{ nginx_config_path }}/config.yml"
+nginx_logging_config: "{{ nginx_config_path }}/logback.xml"
+nginx_log_path: "/var/log/{{ nginx_name }}"
+nginx_src_path: "/usr/local/src"
+
+#config for config server
+
+newrelic_enabled: "{{ newrelic_enabled|default(False) }}"
+newrelic_api_key: "{{ newrelic_api_key|default(None) }}"
+nginx_aws_access_key_id: "{{ aws_access_key_id|default(None) }}"
+nginx_aws_secret_access_key: "{{ aws_secret_access_key|default(None) }}"
+
+nginx_healthcheck: true
+nginx_server_swagger_enabled: true
+nginx_server_context_path: "/"
+nginx_management_context_path: "/health"
+
+nginx_port: 9000
+
+region_stack: "ap-northeast-2"
+
+nginx_logback_max_history: 200
+nginx_logback_max_size: 50MB
+nginx_logback_total_size_cap: 1000MB
+
+nginx_access_log_lv: INFO
+nginx_root_log_lv: WARN
+
+nginx_download_url: "http://nginx.org/download/nginx-{{ nginx_version }}.tar.gz"
+nginx_version: 1.17.3
+
+
+#Internal Domains
+nginx_s2_upstream_domain: weply.benx.internal
+nginx_debug_option: ""
