@@ -3,6 +3,22 @@
   shell: yum groupinstall 'Development Tools' -y ; yum install zlib-devel pcre pcre-devel -y
   become: yes
 
+- name: dev tools 2
+  shell: yum install kqueue -y
+  become: yes
+  
+- name: dev tools 3
+  shell: yum install libcrypt-devel -y
+  become: yes
+
+- name: dev tools 4
+  shell: yum install glibc-headers -y
+  become: yes
+
+- name: dev tools 5
+  shell: yum install glibc -y
+  become: yes
+
 - name: download nginx
   get_url: 
     url: "{{ nginx_download_url }}"
