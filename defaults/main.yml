@@ -42,9 +42,9 @@ nginx_access_log_lv: INFO
 nginx_root_log_lv: WARN
 
 nginx_download_url: "http://nginx.org/download/nginx-{{ nginx_version }}.tar.gz"
-openssl_1_1_0_url: "https://www.openssl.org/source/openssl-{{ open_ssl }}i.tar.gz"
+openssl_1_1_0_url: "https://www.openssl.org/source/openssl-{{ open_ssl_version }}i.tar.gz"
 nginx_version: 1.17.3
-open_ssl: 1.1.1
+open_ssl_version: 1.1.1
 
 #Internal Domains
 nginx_s2_upstream_domain: weply.benx.internal
