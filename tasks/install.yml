@@ -7,6 +7,11 @@
   shell: yum install zlib zlib-devel -y
   become: yes
 
+- name: download openssl
+  get_url:
+    url: "{{ openssl_1_1_0_url }}"
+    dest: "/tmp"
+
 - name: download nginx
   get_url: 
     url: "{{ nginx_download_url }}"
