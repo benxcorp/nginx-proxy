@@ -20,7 +20,7 @@
 
 - name: configure nginx
   become: yes
-  shell: "./configure --prefix={{ nginx_path }} --with-http_stub_status_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-stream --with-http_ssl_module {{ nginx_debug_option }}"
+  shell: "./configure --prefix={{ nginx_path }} --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-stream {{ nginx_debug_option }}"
   args:
     chdir: "{{ nginx_src_path }}/nginx-{{ nginx_version }}"
 
