@@ -3,6 +3,10 @@
   shell: yum groupinstall 'Development Tools' -y ; yum install zlib-devel pcre pcre-devel -y
   become: yes
 
+- name: dev tools
+  shell: yum install zlib zlib-devel -y
+  become: yes
+
 - name: download nginx
   get_url: 
     url: "{{ nginx_download_url }}"
